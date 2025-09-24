@@ -5,8 +5,11 @@
   --gray-700: #364153;
 }
 
-a:hover {
-  text-decoration: none;
+a {
+  outline: none;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 input,

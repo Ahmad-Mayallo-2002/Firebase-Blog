@@ -1,9 +1,9 @@
-import Header from "./components/custom/header";
+import Footer from "./components/custom/footer";
 
 function App() {
   return (
     <>
-      <Header />
+      <Footer />
     </>
   );
 }

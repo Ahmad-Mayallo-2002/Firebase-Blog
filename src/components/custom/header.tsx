@@ -21,7 +21,7 @@ export default function Header() {
   const location = useLocation();
   const onToggle = () => setOpen(!open);
   return (
-    <Box as="header" px={4} py={6} shadow="md">
+    <Box as="header" px={4} py={4} shadow="md">
       <Container
         gapY={open ? 3 : 0}
         className="space-between"
