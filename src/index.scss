@@ -55,9 +55,20 @@ ul {
   background-color: var(--blue-600);
   color: #fff;
   transition: background-color 300ms;
-  border-radius: 6px;
+  border-radius: 10px;
   cursor: pointer;
   &:hover {
     background-color: var(--blue-700);
   }
+}
+
+.hero {
+  background-color: rgb(0, 0, 0, 0.5);
+  background-size: cover;
+  background-position: center;
+  background-position: center;
+  min-height: 500px;
+  background-blend-mode: darken;
+  padding-top: 48px;
+  padding-bottom: 48px;
 }
