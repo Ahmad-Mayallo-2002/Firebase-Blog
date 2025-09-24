@@ -1,11 +1,8 @@
-import Footer from "./components/custom/footer";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./route";
 
 function App() {
-  return (
-    <>
-      <Footer />
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
