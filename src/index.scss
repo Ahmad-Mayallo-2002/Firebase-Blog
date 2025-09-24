@@ -1,0 +1,60 @@
+:root {
+  --blue-600: #155dfb;
+  --blue-700: #1447e6;
+  --gray-300: #d1d5db;
+  --gray-700: #364153;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+input,
+select,
+textarea {
+  outline: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.chakra-container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.center-y {
+  display: flex;
+  align-items: center;
+}
+
+.center-x {
+  display: flex;
+  justify-content: center;
+}
+
+.main-button {
+  background-color: var(--blue-600);
+  color: #fff;
+  transition: background-color 300ms;
+  border-radius: 6px;
+  cursor: pointer;
+  &:hover {
+    background-color: var(--blue-700);
+  }
+}
