@@ -7,6 +7,7 @@ import Contact from "./pages/contact";
 import Categories from "./pages/categories";
 import Post from "./pages/post";
 import SignUp from "./pages/signUp";
+import { Toaster } from "./components/ui/toaster";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
+      <Toaster />
     </>
   );
 }
