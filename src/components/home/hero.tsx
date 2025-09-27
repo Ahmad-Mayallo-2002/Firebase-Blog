@@ -7,27 +7,19 @@ export default function Hero() {
     <>
       <Box as="section" className="hero center-y" bgImage={`url(${hero})`}>
         <Container>
-          <Text
-            p="8px 16px"
-            cursor="initial"
-            className="main-button"
-            mx="auto"
-            w="fit"
-          >
-            Featured Article
-          </Text>
           <Heading
             mt={6}
             color="#fff"
             textAlign="center"
-            fontSize={36}
+            fontSize={34}
             lineHeight={1.25}
-            fontWeight={700}
           >
             The Future of Web Development: Trends to Watch in 2025
           </Heading>
           <Text
             textAlign="center"
+            maxW={800}
+            mx="auto"
             my={4}
             color="#fff"
             fontSize={18}

@@ -35,7 +35,7 @@ export default function Footer() {
               <Icon fontSize={24}>
                 <FaFeather color="var(--blue-600)" />
               </Icon>
-              <Text color="#fff" as="span" fontWeight={700} fontSize={24}>
+              <Text color="#fff" as="span" fontSize={24}>
                 BlogSpace
               </Text>
             </Link>
@@ -65,7 +65,7 @@ export default function Footer() {
           </GridItem>
           {footerLinks.map((link, i) => (
             <GridItem key={i}>
-              <Heading color="#fff" mb={5} fontWeight={700} fontSize={25}>
+              <Heading color="#fff" mb={5} fontSize={25}>
                 {link.heading}
               </Heading>
               {link.links.map((val, ind) => (

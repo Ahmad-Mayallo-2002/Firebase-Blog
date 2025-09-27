@@ -5,6 +5,15 @@
   --gray-700: #364153;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
 a {
   outline: none;
   &:hover {
@@ -71,4 +80,21 @@ ul {
   background-blend-mode: darken;
   padding-top: 48px;
   padding-bottom: 48px;
+}
+
+.special-heading {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #111827;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  & + p {
+    color: #4b5563;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
 }

@@ -32,7 +32,7 @@ export default function Header() {
           <Icon fontSize={24}>
             <FaFeather color="var(--blue-600)" />
           </Icon>
-          <Text as="span" fontWeight={700} fontSize={24}>
+          <Text as="span" fontSize={24}>
             BlogSpace
           </Text>
         </Link>

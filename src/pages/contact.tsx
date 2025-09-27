@@ -1,3 +1,11 @@
+import ContactWays from "../components/contact/contactWays";
+import Hero from "../components/contact/hero";
+
 export default function Contact() {
-  return <div>Contact</div>;
+  return (
+    <>
+      <Hero />
+      <ContactWays />
+    </>
+  );
 }
