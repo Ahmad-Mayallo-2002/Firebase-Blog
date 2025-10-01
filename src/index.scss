@@ -98,3 +98,26 @@ ul {
     text-align: center;
   }
 }
+
+.error-icon {
+  width: 15px;
+  height: 15px;
+}
+
+.form-container {
+  min-height: calc(100vh - 72px);
+  background-color: #eff6ff;
+  form {
+    display: grid;
+    gap: 12px;
+    max-width: 500px;
+    width: 100%;
+    background-color: #fff;
+    margin: 3rem 1rem;
+    padding: 32px;
+    input:not(input[type="file"]):focus,
+    textarea:focus {
+      border-color: #3b82f6;
+    }
+  }
+}

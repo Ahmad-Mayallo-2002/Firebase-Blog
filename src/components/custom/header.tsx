@@ -10,7 +10,13 @@ import {
   List,
   Text,
 } from "@chakra-ui/react";
-import { FaBars, FaFeather, FaSearch, FaUserPlus } from "react-icons/fa";
+import {
+  FaBars,
+  FaFeather,
+  FaSearch,
+  FaUser,
+  FaUserPlus,
+} from "react-icons/fa";
 import { links } from "../../assets/data/nav-links";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
@@ -25,10 +31,10 @@ export default function Header() {
       <Container
         gapY={open ? 3 : 0}
         className="space-between"
-        flexWrap={{ base: "wrap", md: "nowrap" }}
+        flexWrap={{ base: "wrap", lg: "nowrap" }}
       >
         {/* Main Heading */}
-        <Link href="/" className="center-y" gap={2}>
+        <Link href="/" className="center-y" fontWeight={700} gap={2}>
           <Icon fontSize={24}>
             <FaFeather color="var(--blue-600)" />
           </Icon>
@@ -40,7 +46,7 @@ export default function Header() {
         {/* Bars Button */}
         <Button
           onClick={onToggle}
-          display={{ base: "block", md: "none" }}
+          display={{ base: "block", lg: "none" }}
           className="main-button"
         >
           <FaBars />
@@ -49,22 +55,22 @@ export default function Header() {
         {/* Navbar */}
         <Box
           display="flex"
-          alignItems={{ base: "flex-start", md: "center" }}
-          flexDir={{ base: "column", md: "row" }}
+          alignItems={{ base: "flex-start", lg: "center" }}
+          flexDir={{ base: "column", lg: "row" }}
           flexGrow={1}
           as="nav"
-          w={{ base: "full", md: "fit" }}
+          w={{ base: "full", lg: "fit" }}
           gapY={3}
           overflowY="hidden"
-          h={{ base: open ? "100%" : "0px", md: "100%" }}
+          h={{ base: open ? "100%" : "0px", lg: "100%" }}
         >
           {/* Links */}
           <Root
             flexGrow={1}
-            flexDir={{ base: "column", md: "row" }}
+            flexDir={{ base: "column", lg: "row" }}
             justifyContent="center"
             gap="8px 16px"
-            w={{ base: "full", md: "fit" }}
+            w={{ base: "full", lg: "fit" }}
           >
             {links.map((link) => (
               <Item key={link.name} asChild>
@@ -88,10 +94,9 @@ export default function Header() {
 
           {/* Settings */}
           <Grid
-            w="full"
-            md={{ w: "fit" }}
+            w={{ base: "full", lg: "fit" }}
             className="settings"
-            gridTemplateColumns="1fr auto"
+            gridTemplateColumns={{ base: "1fr", lg: "1fr auto auto" }}
             gap={3}
           >
             <InputGroup startElement={<FaSearch color="#b3b8c2" />}>
@@ -102,11 +107,22 @@ export default function Header() {
                 borderRadius="full"
               />
             </InputGroup>
-            <Link href="/sign-in" px={4} className="main-button">
+            <Link
+              href="/sign-up"
+              p=".5rem 1rem"
+              className="main-button"
+              w="fit"
+            >
               <Icon fontSize={24}>
                 <FaUserPlus />
               </Icon>
-              Sign In
+              Sign Up
+            </Link>
+            <Link href="/login" p=".5rem 1rem" className="main-button" w="fit">
+              <Icon fontSize={20}>
+                <FaUser />
+              </Icon>
+              Login
             </Link>
           </Grid>
         </Box>

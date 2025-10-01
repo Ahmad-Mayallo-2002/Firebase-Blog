@@ -72,7 +72,7 @@ export default function SendMessage() {
 
                 {errors.firstName && (
                   <ErrorText className="center-y">
-                    <ErrorIcon w="15px" />
+                    <ErrorIcon className="error-icon" />
                     {errors.firstName?.message as string}
                   </ErrorText>
                 )}
@@ -88,7 +88,7 @@ export default function SendMessage() {
 
                 {errors.lastName && (
                   <ErrorText className="center-y">
-                    <ErrorIcon w="15px" />
+                    <ErrorIcon className="error-icon" />
                     {errors.lastName?.message as string}
                   </ErrorText>
                 )}
@@ -109,7 +109,7 @@ export default function SendMessage() {
 
               {errors.email && (
                 <ErrorText className="center-y">
-                  <ErrorIcon w="15px" />
+                  <ErrorIcon className="error-icon" />
                   {errors.email?.message as string}
                 </ErrorText>
               )}
@@ -127,7 +127,7 @@ export default function SendMessage() {
 
               {errors.message && (
                 <ErrorText className="center-y">
-                  <ErrorIcon w="15px" />
+                  <ErrorIcon className="error-icon" />
                   {errors.message?.message as string}
                 </ErrorText>
               )}

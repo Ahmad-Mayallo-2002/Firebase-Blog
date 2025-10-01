@@ -12,9 +12,12 @@ export default function Hero() {
             color="#fff"
             textAlign="center"
             fontSize={34}
-            lineHeight={1.25}
+            lineHeight={1.5}
           >
-            The Future of Web Development: Trends to Watch in 2025
+            The Future of Web Development:{" "}
+            <Text as="span" display="block">
+              Trends to Watch in 2025
+            </Text>
           </Heading>
           <Text
             textAlign="center"

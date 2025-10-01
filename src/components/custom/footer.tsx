@@ -29,6 +29,7 @@ export default function Footer() {
               href="/"
               justifyContent={{ base: "center", md: "flex-start" }}
               className="center-y"
+              fontWeight={700}
               mb={3}
               gap={2}
             >

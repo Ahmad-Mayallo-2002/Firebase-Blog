@@ -8,6 +8,11 @@ import Categories from "./pages/categories";
 import Post from "./pages/post";
 import SignUp from "./pages/signUp";
 import { Toaster } from "./components/ui/toaster";
+import NotFound from "./pages/notFound";
+import ForgotPassword from "./pages/forgotPassword";
+import VerificationCode from "./pages/verificationCode";
+import UpdatePassword from "./pages/updatePassword";
+import Login from "./pages/login";
 
 function App() {
   return (
@@ -21,6 +26,11 @@ function App() {
           <Route path="/categories" Component={Categories} />
           <Route path="/post/:id" Component={Post} />
           <Route path="/sign-up" Component={SignUp} />
+          <Route path="/forgot-password" Component={ForgotPassword} />
+          <Route path="/verification-code" Component={VerificationCode} />
+          <Route path="/update-password" Component={UpdatePassword} />
+          <Route path="/login" Component={Login} />
+          <Route path="/*" Component={NotFound} />
         </Routes>
         <Footer />
       </BrowserRouter>

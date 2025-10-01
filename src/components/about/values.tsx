@@ -25,7 +25,7 @@ export default function Values() {
                 <Icon
                   mx="auto"
                   p={3}
-                  fontSize={64}
+                  fontSize={55}
                   rounded="full"
                   color={v.iconColor}
                   bgColor={v.bgIconColor}
