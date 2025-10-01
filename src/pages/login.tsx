@@ -34,28 +34,18 @@ export default function Login() {
   };
 
   return (
-    <Box as="section" id="sign-up" className="flex-center form-container">
-      <Box
-        as="form"
-        onSubmit={handleSubmit(onSubmit)}
-        rounded="xl"
-        shadow="xl"
-        p={8}
-      >
-        <Heading fontSize={"2xl"} className="flex-center">
-          <Icon color="blue.500" me="2">
+    <Box as="section" id="login" className="flex-center form-container">
+      <Box as="form" onSubmit={handleSubmit(onSubmit)}>
+        <Heading className="flex-center">
+          <Icon>
             <FaFeather />
           </Icon>
           BlogSpace
         </Heading>
 
-        <Heading textAlign="center" fontSize="2xl">
-          Welcome Back
-        </Heading>
+        <Heading>Welcome Back</Heading>
 
-        <Text textAlign="center" color="gray.400">
-          Sign in to your account to continue
-        </Text>
+        <Text>Sign in to your account to continue</Text>
 
         {/* Email */}
         <Root invalid={!!errors.email}>

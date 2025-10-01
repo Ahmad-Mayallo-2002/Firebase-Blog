@@ -26,10 +26,10 @@ function App() {
           <Route path="/categories" Component={Categories} />
           <Route path="/post/:id" Component={Post} />
           <Route path="/sign-up" Component={SignUp} />
+          <Route path="/login" Component={Login} />
           <Route path="/forgot-password" Component={ForgotPassword} />
           <Route path="/verification-code" Component={VerificationCode} />
           <Route path="/update-password" Component={UpdatePassword} />
-          <Route path="/login" Component={Login} />
           <Route path="/*" Component={NotFound} />
         </Routes>
         <Footer />

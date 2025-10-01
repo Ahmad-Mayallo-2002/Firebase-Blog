@@ -53,27 +53,17 @@ export default function SignUp() {
 
   return (
     <Box as="section" id="sign-up" className="flex-center form-container">
-      <Box
-        as="form"
-        onSubmit={handleSubmit(onSubmit)}
-        rounded="xl"
-        shadow="xl"
-        p={8}
-      >
-        <Heading fontSize={"2xl"} className="flex-center">
-          <Icon color="blue.500" me="2">
+      <Box as="form" onSubmit={handleSubmit(onSubmit)}>
+        <Heading className="flex-center">
+          <Icon>
             <FaFeather />
           </Icon>
           BlogSpace
         </Heading>
 
-        <Heading textAlign="center" fontSize="2xl">
-          Create Account
-        </Heading>
+        <Heading>Create Account</Heading>
 
-        <Text textAlign="center" color="gray.400">
-          Join our community of tech enthusiasts
-        </Text>
+        <Text>Join our community of tech enthusiasts</Text>
 
         {/* Image */}
         <Root invalid={!!errors.image} minH="150px" className="flex-center">
