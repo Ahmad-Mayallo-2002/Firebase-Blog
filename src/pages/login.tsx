@@ -1,6 +1,156 @@
+import {
+  Box,
+  Button,
+  Field,
+  Heading,
+  Icon,
+  Input,
+  Link,
+  Text,
+} from "@chakra-ui/react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { FaFeather, FaGoogle } from "react-icons/fa";
+import type { ILogin } from "../assets/interface/login";
 
 export default function Login() {
+  const [loading, setLoading] = useState<boolean>(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ILogin>();
+  const { Root, ErrorIcon, ErrorText, Label } = Field;
+
+  const onSubmit = (data: ILogin) => {
+    try {
+      setLoading(true);
+      console.log("Form Data:", data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div>Login</div>
-  )
+    <Box as="section" id="sign-up" className="flex-center form-container">
+      <Box
+        as="form"
+        onSubmit={handleSubmit(onSubmit)}
+        rounded="xl"
+        shadow="xl"
+        p={8}
+      >
+        <Heading fontSize={"2xl"} className="flex-center">
+          <Icon color="blue.500" me="2">
+            <FaFeather />
+          </Icon>
+          BlogSpace
+        </Heading>
+
+        <Heading textAlign="center" fontSize="2xl">
+          Welcome Back
+        </Heading>
+
+        <Text textAlign="center" color="gray.400">
+          Sign in to your account to continue
+        </Text>
+
+        {/* Email */}
+        <Root invalid={!!errors.email}>
+          <Label>Email</Label>
+          <Input
+            placeholder="Enter email..."
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[A-Za-z]{4,20}[0-9]+@gmail\.com$/,
+                message:
+                  "Email must match pattern: letters(4-20) + numbers + @gmail.com",
+              },
+            })}
+          />
+          {errors.email && (
+            <ErrorText>
+              <ErrorIcon className="error-icon" /> {errors.email.message}
+            </ErrorText>
+          )}
+        </Root>
+
+        {/* Password */}
+        <Root invalid={!!errors.password}>
+          <Label>Password</Label>
+          <Input
+            type="password"
+            placeholder="Enter password..."
+            {...register("password", {
+              required: "Password is required",
+              minLength: {
+                value: 9,
+                message: "Password must be at least 9 characters",
+              },
+              maxLength: {
+                value: 20,
+                message: "Password must not exceed 20 characters",
+              },
+            })}
+          />
+          {errors.password && (
+            <ErrorText>
+              <ErrorIcon className="error-icon" /> {errors.password.message}
+            </ErrorText>
+          )}
+        </Root>
+
+        <Text
+          textAlign="center"
+          my={4}
+          color="gray.400"
+          pos="relative"
+          _before={{
+            pos: "absolute",
+            content: "''",
+            w: "full",
+            h: 0.25,
+            top: "50%",
+            scaleY: "-50%",
+            left: 0,
+            bgColor: "gray.200",
+          }}
+        >
+          <Text as="span" bgColor="#fff" px={2} pos="relative">
+            Or login with
+          </Text>
+        </Text>
+
+        <Button mb={4} colorPalette="red" variant="outline">
+          <FaGoogle />
+          Google
+        </Button>
+
+        {/* Submit Button */}
+        <Button
+          loading={loading}
+          loadingText="Loading..."
+          w="full"
+          type="submit"
+          colorPalette="blue"
+        >
+          Login
+        </Button>
+
+        <Text textAlign="center" color="gray.400">
+          Don't have an account?{" "}
+          <Link
+            href="/sign-up"
+            color="blue.500"
+            _hover={{ textDecor: "underline" }}
+          >
+            Sign up
+          </Link>
+        </Text>
+      </Box>
+    </Box>
+  );
 }

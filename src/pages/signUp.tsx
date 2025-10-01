@@ -6,13 +6,14 @@ import {
   Icon,
   Image,
   Input,
+  Link,
   Text,
   Textarea,
 } from "@chakra-ui/react";
 import { useState, type ChangeEvent } from "react";
 import { useForm } from "react-hook-form";
 import type { ISignUp } from "../assets/interface/signUp";
-import { FaFeather } from "react-icons/fa";
+import { FaFeather, FaGoogle } from "react-icons/fa";
 import defaultUser from "../assets/images/default-user.jpg";
 
 export default function SignUp() {
@@ -215,6 +216,43 @@ export default function SignUp() {
         >
           Create Account
         </Button>
+
+        <Text
+          textAlign="center"
+          my={4}
+          color="gray.400"
+          pos="relative"
+          _before={{
+            pos: "absolute",
+            content: "''",
+            w: "full",
+            h: 0.25,
+            top: "50%",
+            scaleY: "-50%",
+            left: 0,
+            bgColor: "gray.200",
+          }}
+        >
+          <Text as="span" bgColor="#fff" px={2} pos="relative">
+            Or sign up with
+          </Text>
+        </Text>
+
+        <Button mb={4} colorPalette="red" variant="outline">
+          <FaGoogle />
+          Google
+        </Button>
+
+        <Text textAlign="center" color="gray.400">
+          Already have an account?{" "}
+          <Link
+            href="/login"
+            color="blue.500"
+            _hover={{ textDecor: "underline" }}
+          >
+            Login
+          </Link>
+        </Text>
       </Box>
     </Box>
   );
