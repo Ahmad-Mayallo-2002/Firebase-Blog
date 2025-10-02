@@ -75,7 +75,7 @@ export default function Mission() {
             </GridItem>
             <GridItem>
               <Image
-                shadow="xl"
+                shadow="md"
                 src={mission}
                 borderRadius="xl"
                 w={{ base: "100%", md: "80%" }}

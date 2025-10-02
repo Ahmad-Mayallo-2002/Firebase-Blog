@@ -38,6 +38,36 @@ ul {
   padding-right: 20px;
 }
 
+@media (max-width: 575px) {
+  .chakra-container {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .chakra-container {
+    max-width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .chakra-container {
+    max-width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .chakra-container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .chakra-container {
+    max-width: 1360px;
+  }
+}
+
 .flex-center {
   display: flex;
   justify-content: center;

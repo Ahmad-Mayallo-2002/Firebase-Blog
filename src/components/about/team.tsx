@@ -22,7 +22,7 @@ export default function Team() {
 
           <SimpleGrid mt={8} gap={4} columns={{ base: 1, md: 2, lg: 4 }}>
             {team.map((t, i) => (
-              <GridItem key={i} p={4} borderRadius="xl" shadow="lg">
+              <GridItem key={i} p={4} borderRadius="xl" shadow="md">
                 <Image mx="auto" src={t.image} borderRadius="full" w="100px" />
                 <Heading textAlign="center" mt={4} fontSize={23}>
                   {t.name}

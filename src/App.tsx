@@ -13,6 +13,7 @@ import ForgotPassword from "./pages/forgotPassword";
 import VerificationCode from "./pages/verificationCode";
 import UpdatePassword from "./pages/updatePassword";
 import Login from "./pages/login";
+import Profile from "./pages/profile";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/about" Component={About} />
           <Route path="/contact" Component={Contact} />
           <Route path="/categories" Component={Categories} />
+          <Route path="/profile" Component={Profile} />
           <Route path="/post/:id" Component={Post} />
           <Route path="/sign-up" Component={SignUp} />
           <Route path="/login" Component={Login} />
