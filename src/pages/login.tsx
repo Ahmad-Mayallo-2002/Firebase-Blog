@@ -12,6 +12,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaFeather, FaGoogle } from "react-icons/fa";
 import type { ILogin } from "../assets/interface/login";
+import { loginUser } from "../assets/firebase/login";
+import { signInWithGoogle } from "../assets/firebase/googleAuth";
 
 export default function Login() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -22,10 +24,11 @@ export default function Login() {
   } = useForm<ILogin>();
   const { Root, ErrorIcon, ErrorText, Label } = Field;
 
-  const onSubmit = (data: ILogin) => {
+  const onSubmit = async (data: ILogin) => {
     try {
       setLoading(true);
-      console.log("Form Data:", data);
+      const result = await loginUser(data.email, data.password);
+      console.log(result);
     } catch (error) {
       console.log(error);
     } finally {
@@ -114,7 +117,12 @@ export default function Login() {
           </Text>
         </Text>
 
-        <Button mb={4} colorPalette="red" variant="outline">
+        <Button
+          mb={4}
+          colorPalette="red"
+          variant="outline"
+          onClick={async () => await signInWithGoogle()}
+        >
           <FaGoogle />
           Google
         </Button>

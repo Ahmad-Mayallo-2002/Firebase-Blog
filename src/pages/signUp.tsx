@@ -15,11 +15,8 @@ import { useForm } from "react-hook-form";
 import type { ISignUp } from "../assets/interface/signUp";
 import { FaFeather, FaGoogle } from "react-icons/fa";
 import defaultUser from "../assets/images/default-user.jpg";
-import { doc, serverTimestamp, setDoc } from "firebase/firestore";
-import { auth, db } from "../assets/config/firebase";
-import { uploadImageToCloudinary } from "../assets/utils/uploadFile.";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { toaster } from "../components/ui/toaster";
+import { signUpUser } from "../assets/firebase/signUp";
+import { signInWithGoogle } from "../assets/firebase/googleAuth";
 
 export default function SignUp() {
   const [image, setImage] = useState<string>(defaultUser);
@@ -36,43 +33,9 @@ export default function SignUp() {
     try {
       setLoading(true);
       // Create user in firebase Auth
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        data.email,
-        data.password
-      );
-      const user = userCredential.user;
-
-      const image =
-        data.image && (await uploadImageToCloudinary(data.image[0]));
-
-      await setDoc(doc(db, "user", user.uid), {
-        uid: user.uid,
-        email: user.email,
-        username: data.username,
-        createdAt: serverTimestamp(),
-        image: JSON.stringify({
-          url: image?.secure_url,
-          public_id: image?.public_id,
-        }),
-        bio: data.bio,
-      });
-
-      toaster.success({
-        title: "Signup successful",
-        description: "Welcome to the blog app 🎉",
-        duration: 3000,
-        closable: true,
-      });
+      const result = await signUpUser(data);
+      console.log(result);
     } catch (error: any) {
-      if (error.code === "auth/email-already-in-use") {
-        toaster.error({
-          title: "Error",
-          duration: 3000,
-          description: "Email already in use",
-          closable: true,
-        });
-      }
       console.log(error);
     } finally {
       setLoading(false);
@@ -267,7 +230,12 @@ export default function SignUp() {
           </Text>
         </Text>
 
-        <Button mb={4} colorPalette="red" variant="outline">
+        <Button
+          mb={4}
+          colorPalette="red"
+          variant="outline"
+          onClick={async () => await signInWithGoogle()}
+        >
           <FaGoogle />
           Google
         </Button>
