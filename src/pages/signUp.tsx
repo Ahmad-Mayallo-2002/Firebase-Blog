@@ -15,6 +15,11 @@ import { useForm } from "react-hook-form";
 import type { ISignUp } from "../assets/interface/signUp";
 import { FaFeather, FaGoogle } from "react-icons/fa";
 import defaultUser from "../assets/images/default-user.jpg";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { auth, db } from "../assets/config/firebase";
+import { uploadImageToCloudinary } from "../assets/utils/uploadFile.";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { toaster } from "../components/ui/toaster";
 
 export default function SignUp() {
   const [image, setImage] = useState<string>(defaultUser);
@@ -27,11 +32,47 @@ export default function SignUp() {
   } = useForm<ISignUp>();
   const { Root, ErrorIcon, ErrorText, Label } = Field;
 
-  const onSubmit = (data: ISignUp) => {
+  const onSubmit = async (data: ISignUp) => {
     try {
       setLoading(true);
-      console.log("Form Data:", data);
-    } catch (error) {
+      // Create user in firebase Auth
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+      const user = userCredential.user;
+
+      const image =
+        data.image && (await uploadImageToCloudinary(data.image[0]));
+
+      await setDoc(doc(db, "user", user.uid), {
+        uid: user.uid,
+        email: user.email,
+        username: data.username,
+        createdAt: serverTimestamp(),
+        image: JSON.stringify({
+          url: image?.secure_url,
+          public_id: image?.public_id,
+        }),
+        bio: data.bio,
+      });
+
+      toaster.success({
+        title: "Signup successful",
+        description: "Welcome to the blog app 🎉",
+        duration: 3000,
+        closable: true,
+      });
+    } catch (error: any) {
+      if (error.code === "auth/email-already-in-use") {
+        toaster.error({
+          title: "Error",
+          duration: 3000,
+          description: "Email already in use",
+          closable: true,
+        });
+      }
       console.log(error);
     } finally {
       setLoading(false);
@@ -40,7 +81,6 @@ export default function SignUp() {
 
   const onChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-
     if (file) {
       const fileReader = new FileReader();
       fileReader.onloadend = () => setImage(`${fileReader.result}`);
@@ -50,7 +90,6 @@ export default function SignUp() {
 
   // watch password to validate confirmPassword
   const password = watch("password");
-
   return (
     <Box as="section" id="sign-up" className="flex-center form-container">
       <Box as="form" onSubmit={handleSubmit(onSubmit)}>

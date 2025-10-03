@@ -4,5 +4,5 @@ export interface ISignUp {
   password: string;
   confirmPassword: string;
   bio?: string;
-  image?: File;
+  image?: FileList;
 }

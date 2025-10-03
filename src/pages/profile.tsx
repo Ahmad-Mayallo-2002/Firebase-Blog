@@ -1,4 +1,4 @@
-import GridSystem from "../components/profile/GridSystem";
+import GridSystem from "../components/profile/gridSystem";
 import ProfileHero from "../components/profile/hero";
 import ProfileCounts from "../components/profile/profileCounts";
 
