@@ -2,6 +2,7 @@ import { Box, Button, Field, Heading, Input, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaFeather } from "react-icons/fa";
+import { resetPassword } from "../assets/firebase/resetPassword";
 
 interface IEmail {
   email: string;
@@ -16,10 +17,11 @@ export default function ForgotPassword() {
   } = useForm<IEmail>();
   const { Root, Label, ErrorIcon, ErrorText } = Field;
 
-  const onSubmit = (data: IEmail) => {
+  const onSubmit = async (data: IEmail) => {
     try {
       setLoading(true);
-      console.log("Email submitted:", data.email);
+      const result = await resetPassword(data.email);
+      console.log(result);
     } catch (error) {
       console.error(error);
     } finally {

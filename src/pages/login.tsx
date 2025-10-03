@@ -148,6 +148,17 @@ export default function Login() {
             Sign up
           </Link>
         </Text>
+
+        <Text textAlign="center" color="gray.400">
+          Don't remember password?{" "}
+          <Link
+            href="/forgot-password"
+            color="blue.500"
+            _hover={{ textDecor: "underline" }}
+          >
+            Forgot Password
+          </Link>
+        </Text>
       </Box>
     </Box>
   );

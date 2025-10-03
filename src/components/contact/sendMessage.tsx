@@ -9,9 +9,9 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import emailjs from "@emailjs/browser";
 import { toaster } from "../ui/toaster";
 import { useState } from "react";
+import { sendMail } from "../../assets/utils/emailSend";
 
 interface Message {
   firstName: string;
@@ -31,25 +31,16 @@ export default function SendMessage() {
   const onSubmit = async (_data: any, event: any) => {
     try {
       setLoading(true);
-      await emailjs.sendForm(
-        import.meta.env.VITE_EMAIL_JS_SERVICE_ID as string,
-        import.meta.env.VITE_EMAIL_JS_TEMPLATE_ID,
-        event.target,
-        import.meta.env.VITE_EMAIL_JS_PUBLIC_ID
-      );
+      await sendMail(event.target);
       toaster.success({
         title: "Success",
         description: "Message sent successfully",
-        duration: 3000,
-        closable: true,
       });
     } catch (error: any) {
       console.error(error);
       toaster.error({
         title: "Error",
         description: "There is error",
-        duration: 3000,
-        closable: true,
       });
     } finally {
       setLoading(false);

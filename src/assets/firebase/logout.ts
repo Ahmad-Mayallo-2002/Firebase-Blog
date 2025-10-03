@@ -10,8 +10,7 @@ export const logoutUser = async () => {
     console.error("Logout error:", error.message);
     toaster.error({
       title: "Error",
-      duration: 3000,
-      closable: true,
+
       description: "Failed to log out. Please try again.",
     });
     throw new Error("Failed to log out. Please try again.");

@@ -36,8 +36,7 @@ export const signInWithGoogle = async () => {
     console.error("Google sign-in error:", error);
     toaster.error({
       title: "Error",
-      duration: 3000,
-      closable: true,
+
       description: "Google sign-in failed. Please try again.",
     });
     throw new Error("Google sign-in failed. Please try again.");

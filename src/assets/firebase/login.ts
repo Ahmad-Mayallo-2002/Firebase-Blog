@@ -26,8 +26,7 @@ export const loginUser = async (email: string, password: string) => {
 
     toaster.error({
       title: "Error",
-      duration: 3000,
-      closable: true,
+
       description,
     });
 

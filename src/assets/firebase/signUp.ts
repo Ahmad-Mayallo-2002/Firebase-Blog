@@ -31,16 +31,13 @@ export const signUpUser = async (data: ISignUp) => {
     toaster.success({
       title: "Signup successful",
       description: "Welcome to the blog app 🎉",
-      duration: 3000,
-      closable: true,
     });
   } catch (error: any) {
     if (error.code === "auth/email-already-in-use") {
       toaster.error({
         title: "Error",
-        duration: 3000,
+
         description: "Email already in use",
-        closable: true,
       });
     }
   }
