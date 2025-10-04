@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
-import Categories from "./posts";
 import PopularPosts from "./popularPosts";
 import PopularTags from "./popularTags";
+import Categories from "./categories";
 
 export default function Sidebar() {
   return (
