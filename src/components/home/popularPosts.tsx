@@ -33,7 +33,7 @@ export default function PopularPosts() {
                   {v.createdAt.toLocaleDateString()}
                 </Text>
                 <Link
-                  href="/categories"
+                  href="/posts"
                   color="blue.500"
                   fontSize="sm"
                   _hover={{ textDecor: "underline" }}

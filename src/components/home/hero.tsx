@@ -33,7 +33,7 @@ export default function Hero() {
             integration to new frameworks.
           </Text>
           <Link
-            href="/categories"
+            href="/posts"
             p="8px 16px"
             className="center-y main-button"
             mx="auto"

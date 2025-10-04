@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import Categories from "./categories";
+import Categories from "./posts";
 import PopularPosts from "./popularPosts";
 import PopularTags from "./popularTags";
 

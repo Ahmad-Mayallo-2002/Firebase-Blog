@@ -50,11 +50,11 @@ export const footerLinks: FooterLink[] = [
   {
     heading: "Categories",
     links: [
-      { name: "Web Development", href: "/categories/web-development" },
-      { name: "AI & Tech", href: "/categories/ai-tech" },
-      { name: "Design", href: "/categories/design" },
-      { name: "Security", href: "/categories/security" },
-      { name: "Marketing", href: "/categories/marketing" },
+      { name: "Web Development", href: "/posts/web-development" },
+      { name: "AI & Tech", href: "/posts/ai-tech" },
+      { name: "Design", href: "/posts/design" },
+      { name: "Security", href: "/posts/security" },
+      { name: "Marketing", href: "/posts/marketing" },
     ],
   },
   {

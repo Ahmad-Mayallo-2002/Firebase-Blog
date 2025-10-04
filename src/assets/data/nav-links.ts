@@ -9,8 +9,8 @@ export const links: Link[] = [
     href: "/",
   },
   {
-    name: "Categories",
-    href: "/categories",
+    name: "Posts",
+    href: "/posts",
   },
   {
     name: "About",

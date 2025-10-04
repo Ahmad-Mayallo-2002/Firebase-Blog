@@ -66,7 +66,7 @@ export default function ArticleCard({
             <Link
               _hover={{ textDecor: "underline" }}
               color="blue.500"
-              href="/categories/1"
+              href="/posts/1"
             >
               Read Post
             </Link>
