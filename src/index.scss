@@ -25,6 +25,9 @@ input,
 select,
 textarea {
   outline: none;
+  &:focus {
+    border-color: #3b82f6;
+  }
 }
 
 ul {

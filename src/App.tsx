@@ -14,6 +14,7 @@ import UpdatePassword from "./pages/updatePassword";
 import Login from "./pages/login";
 import Profile from "./pages/profile";
 import Posts from "./pages/posts";
+import CreateArticle from "./pages/createArticle";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/posts" Component={Posts} />
           <Route path="/posts/:id" Component={Post} />
           <Route path="/profile" Component={Profile} />
+          <Route path="/new-article" Component={CreateArticle} />
           <Route path="/sign-up" Component={SignUp} />
           <Route path="/login" Component={Login} />
           <Route path="/forgot-password" Component={ForgotPassword} />
