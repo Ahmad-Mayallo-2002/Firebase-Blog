@@ -14,6 +14,7 @@ import { FaFeather, FaGoogle } from "react-icons/fa";
 import type { ILogin } from "../assets/interface/login";
 import { loginUser } from "../assets/firebase/login";
 import { signInWithGoogle } from "../assets/firebase/googleAuth";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -23,6 +24,7 @@ export default function Login() {
     formState: { errors },
   } = useForm<ILogin>();
   const { Root, ErrorIcon, ErrorText, Label } = Field;
+  const navigate = useNavigate();
 
   const onSubmit = async (data: ILogin) => {
     try {
@@ -121,7 +123,10 @@ export default function Login() {
           mb={4}
           colorPalette="red"
           variant="outline"
-          onClick={async () => await signInWithGoogle()}
+          onClick={async () => {
+            await signInWithGoogle();
+            navigate("/");
+          }}
         >
           <FaGoogle />
           Google

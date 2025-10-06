@@ -16,10 +16,11 @@ import {
   createListCollection,
   Portal,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { toaster } from "../components/ui/toaster";
+import { AuthContext } from "../context/auth";
 
 interface IArticle {
   title: string;
@@ -59,14 +60,24 @@ export default function CreateArticle() {
     }
   };
 
-  const onSubmit = (data: IArticle) => {
-    console.log("Submitted Data:", data);
-    reset();
-    setImage("");
-    toaster.success({
-      title: "Success",
-      description: "Article created",
-    });
+  const { user } = useContext(AuthContext);
+
+  const onSubmit = async (data: IArticle) => {
+    try {
+      if (!user) throw new Error("Access is denied, Login First");
+      reset();
+      setImage("");
+      toaster.success({
+        title: "Success",
+        description: "Article created",
+      });
+    } catch (error: any) {
+      toaster.error({
+        title: "Error",
+        description: "Error",
+      });
+      console.log(error);
+    }
   };
 
   return (

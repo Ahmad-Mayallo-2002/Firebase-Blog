@@ -8,6 +8,7 @@ import {
   InputGroup,
   Link,
   List,
+  Spinner,
   Text,
 } from "@chakra-ui/react";
 import {
@@ -19,13 +20,16 @@ import {
 } from "react-icons/fa";
 import { links } from "../../assets/data/nav-links";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../context/auth";
+import UserList from "./userList";
 
 export default function Header() {
   const { Root, Item } = List;
   const [open, setOpen] = useState<boolean>(false);
   const location = useLocation();
-  const onToggle = () => setOpen(!open);
+  const { user, loading } = useContext(AuthContext);
+
   return (
     <Box as="header" px={4} py={4} shadow="md">
       <Container
@@ -45,7 +49,7 @@ export default function Header() {
 
         {/* Bars Button */}
         <Button
-          onClick={onToggle}
+          onClick={() => setOpen(!open)}
           display={{ base: "block", lg: "none" }}
           className="main-button"
         >
@@ -107,23 +111,47 @@ export default function Header() {
                 borderRadius="full"
               />
             </InputGroup>
-            <Link
-              href="/sign-up"
-              p=".5rem 1rem"
-              className="main-button"
-              w="fit"
-            >
-              <Icon fontSize={24}>
-                <FaUserPlus />
-              </Icon>
-              Sign Up
-            </Link>
-            <Link href="/login" p=".5rem 1rem" className="main-button" w="fit">
-              <Icon fontSize={20}>
-                <FaUser />
-              </Icon>
-              Login
-            </Link>
+            {loading ? (
+              <Spinner
+                borderWidth={3}
+                animationDuration="600ms"
+                borderColor="blue.500"
+                borderTopColor="transparent"
+                w="40px"
+                h="40px"
+              />
+            ) : (
+              <>
+                {user ? (
+                  <UserList />
+                ) : (
+                  <>
+                    <Link
+                      href="/sign-up"
+                      p=".5rem 1rem"
+                      className="main-button"
+                      w="fit"
+                    >
+                      <Icon fontSize={24}>
+                        <FaUserPlus />
+                      </Icon>
+                      Sign Up
+                    </Link>
+                    <Link
+                      href="/login"
+                      p=".5rem 1rem"
+                      className="main-button"
+                      w="fit"
+                    >
+                      <Icon fontSize={20}>
+                        <FaUser />
+                      </Icon>
+                      Login
+                    </Link>
+                  </>
+                )}
+              </>
+            )}
           </Grid>
         </Box>
       </Container>
