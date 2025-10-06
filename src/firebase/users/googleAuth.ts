@@ -1,6 +1,6 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore";
-import { auth, db } from "../config/firebase";
+import { auth, db } from "../../assets/config/firebase";
 import { toaster } from "../../components/ui/toaster";
 
 const provider = new GoogleAuthProvider();
@@ -36,7 +36,6 @@ export const signInWithGoogle = async () => {
     console.error("Google sign-in error:", error);
     toaster.error({
       title: "Error",
-
       description: "Google sign-in failed. Please try again.",
     });
     throw new Error("Google sign-in failed. Please try again.");

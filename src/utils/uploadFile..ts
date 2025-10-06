@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { ICloudImage } from "../interface/cloudImage";
+import type { ICloudImage } from "../assets/interface/cloudImage";
 
 export const uploadImageToCloudinary = async (
   file: File

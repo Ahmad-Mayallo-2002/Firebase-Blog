@@ -1,9 +1,9 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, db } from "../config/firebase";
-import { uploadImageToCloudinary } from "../utils/uploadFile.";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+import type { ISignUp } from "../../assets/interface/signUp";
+import { auth, db } from "../../assets/config/firebase";
+import { uploadImageToCloudinary } from "../../utils/uploadFile.";
 import { toaster } from "../../components/ui/toaster";
-import type { ISignUp } from "../interface/signUp";
 
 export const signUpUser = async (data: ISignUp) => {
   try {
@@ -36,7 +36,6 @@ export const signUpUser = async (data: ISignUp) => {
     if (error.code === "auth/email-already-in-use") {
       toaster.error({
         title: "Error",
-
         description: "Email already in use",
       });
     }

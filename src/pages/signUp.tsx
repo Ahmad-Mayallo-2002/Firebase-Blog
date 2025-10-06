@@ -15,8 +15,8 @@ import { useForm } from "react-hook-form";
 import type { ISignUp } from "../assets/interface/signUp";
 import { FaFeather, FaGoogle } from "react-icons/fa";
 import defaultUser from "../assets/images/default-user.jpg";
-import { signUpUser } from "../assets/firebase/signUp";
-import { signInWithGoogle } from "../assets/firebase/googleAuth";
+import { signUpUser } from "../firebase/users/signUp";
+import { signInWithGoogle } from "../firebase/users/googleAuth";
 
 export default function SignUp() {
   const [image, setImage] = useState<string>(defaultUser);

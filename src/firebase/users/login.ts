@@ -1,5 +1,5 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../config/firebase";
+import { auth } from "../../assets/config/firebase";
 import { toaster } from "../../components/ui/toaster";
 
 export const loginUser = async (email: string, password: string) => {
@@ -26,7 +26,6 @@ export const loginUser = async (email: string, password: string) => {
 
     toaster.error({
       title: "Error",
-
       description,
     });
 

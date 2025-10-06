@@ -19,8 +19,9 @@ export default function Articles() {
       </HStack>
 
       <VStack gap={4}>
-        {articles.map((a) => (
+        {articles.map((a, i) => (
           <ArticleBox
+            key={i}
             image={asd}
             title={a.title}
             description={a.description}

@@ -12,9 +12,9 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaFeather, FaGoogle } from "react-icons/fa";
 import type { ILogin } from "../assets/interface/login";
-import { loginUser } from "../assets/firebase/login";
-import { signInWithGoogle } from "../assets/firebase/googleAuth";
 import { useNavigate } from "react-router-dom";
+import { loginUser } from "../firebase/users/login";
+import { signInWithGoogle } from "../firebase/users/googleAuth";
 
 export default function Login() {
   const [loading, setLoading] = useState<boolean>(false);

@@ -11,7 +11,7 @@ import {
 import { useForm } from "react-hook-form";
 import { toaster } from "../ui/toaster";
 import { useState } from "react";
-import { sendMail } from "../../assets/utils/emailSend";
+import { sendMail } from "../../utils/emailSend";
 
 interface Message {
   firstName: string;

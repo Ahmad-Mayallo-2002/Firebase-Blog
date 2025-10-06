@@ -1,7 +1,7 @@
 import { Avatar, Link, Menu, Portal, Separator } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { auth } from "../../assets/config/firebase";
-import { logoutUser } from "../../assets/firebase/logout";
+import { logoutUser } from "../../firebase/users/logout";
 
 interface CurrentUser {
   email: string;

@@ -2,7 +2,7 @@ import { Box, Button, Field, Heading, Input, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaFeather } from "react-icons/fa";
-import { resetPassword } from "../assets/firebase/resetPassword";
+import { resetPassword } from "../firebase/users/resetPassword";
 
 interface IEmail {
   email: string;

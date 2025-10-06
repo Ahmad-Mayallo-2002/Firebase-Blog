@@ -21,13 +21,15 @@ import { useForm } from "react-hook-form";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { toaster } from "../components/ui/toaster";
 import { AuthContext } from "../context/auth";
+import { uploadImageToCloudinary } from "../utils/uploadFile.";
+import type { ICloudImage } from "../assets/interface/cloudImage";
 
 interface IArticle {
   title: string;
   category: string;
   description: string;
   content: string;
-  image: string;
+  image: FileList;
 }
 
 const frameworks = createListCollection({
@@ -40,6 +42,7 @@ const frameworks = createListCollection({
 });
 
 export default function CreateArticle() {
+  const [loading, setLoading] = useState<boolean>(false);
   const [image, setImage] = useState<string>("");
   const [maxLength, setMaxLength] = useState<number>(0);
   const { Root: FileRoot, HiddenInput, Dropzone, DropzoneContent } = FileUpload;
@@ -64,7 +67,11 @@ export default function CreateArticle() {
 
   const onSubmit = async (data: IArticle) => {
     try {
-      if (!user) throw new Error("Access is denied, Login First");
+      setLoading(true);
+      // if (!user) throw new Error("Access is denied, Login First");
+      const result = await uploadImageToCloudinary(data.image?.[0]);
+      
+
       reset();
       setImage("");
       toaster.success({
@@ -74,9 +81,10 @@ export default function CreateArticle() {
     } catch (error: any) {
       toaster.error({
         title: "Error",
-        description: "Error",
+        description: error.message,
       });
-      console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -228,7 +236,13 @@ export default function CreateArticle() {
             )}
           </Root>
 
-          <Button type="submit" w="full" colorPalette="blue">
+          <Button
+            loading={loading}
+            loadingText="Loading..."
+            type="submit"
+            w="full"
+            colorPalette="blue"
+          >
             Create
           </Button>
         </VStack>
